@@ -7,6 +7,9 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Budget Fest",
   description: "Budget Management sytem for technical Fests",
+  // icons: {
+  //   icon: "",
+  // }
 };
 
 export default function RootLayout({
