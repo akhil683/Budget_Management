@@ -1,8 +1,12 @@
+"use client";
 import Link from "next/link";
 import React from "react";
 import { Button } from "./ui/button";
+import { Switch } from "@radix-ui/react-switch";
+import { Label } from "@radix-ui/react-label";
 
 const Navbar = () => {
+  const onModeChange = () => {};
   return (
     <nav className="flex justify-between mx-4 h-[60px] items-center">
       <div className="flex gap-6 font-semibold">
@@ -26,9 +30,11 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="flex gap-6 items-center">
-        <Link href={""} className="font-semibold">
-          Request a Demo
-        </Link>
+        <div className="flex items-center space-x-2">
+          <Switch id="airplane-mode" onCheckedChange={onModeChange} />
+          <Label htmlFor="airplane-mode">Mode</Label>
+        </div>
+
         <Button asChild>
           <Link href="/sign-in">Sign In</Link>
         </Button>
