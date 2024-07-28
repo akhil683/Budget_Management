@@ -1,39 +1,28 @@
 import React from "react";
-import {
-  Table,
-  TableBody,
-  TableCaption,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
+import { columns } from "./columns";
+import { DataTable } from "./data-table";
+import Budgets from "@/constants/budgetData";
+import { Button } from "@/components/ui/button";
+import { Sheet, SheetTrigger } from "@/components/ui/sheet";
+import { BudgetSheet } from "@/components/BudgetSheet";
 
 const BudgetPage = () => {
   return (
-    <section className="text-gray-900 w-full bg-red-200">
+    <section className="text-gray-900 w-full m-8">
       <div>
-        <Table>
-          <TableCaption>A list of your budgets !</TableCaption>
-          <TableHeader>
-            <TableRow>
-              <TableHead className="w-[200px]">Title</TableHead>
-              <TableHead className="w-24">Status</TableHead>
-              <TableHead className="w-32">Date</TableHead>
-              <TableHead className="w-28">Type</TableHead>
-              <TableHead className="text-right">Amount</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            <TableRow>
-              <TableCell className="font-medium">Mutual Funds</TableCell>
-              <TableCell>Paid</TableCell>
-              <TableCell>24 July, 2024</TableCell>
-              <TableCell>Monthly</TableCell>
-              <TableCell className="text-right">$250.00</TableCell>
-            </TableRow>
-          </TableBody>
-        </Table>
+        <h1 className="font-semibold text-4xl ">Neighbour Buget</h1>
+        <p className="text-sm text-gray-700 my-2">
+          Neighbour's budget for 3rd year parties
+        </p>
+      </div>
+      <Sheet>
+        <SheetTrigger asChild>
+          <Button>New</Button>
+        </SheetTrigger>
+        <BudgetSheet />
+      </Sheet>
+      <div className="my-8">
+        <DataTable columns={columns} data={Budgets} />
       </div>
     </section>
   );

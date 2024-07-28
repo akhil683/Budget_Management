@@ -48,7 +48,7 @@ const Sidebar = () => {
               {/*   width={24} */}
               {/*   height={24} */}
               {/* /> */}
-              <p className="font-semibold max-lg:hidden">{link.label}</p>
+              <p className="font-semibold max-lg:text-sm">{link.label}</p>
             </Link>
           );
         })}

@@ -2,11 +2,13 @@
 import Link from "next/link";
 import React from "react";
 import { Button } from "./ui/button";
-import { Switch } from "@radix-ui/react-switch";
+import { Switch } from "./ui/switch";
 import { Label } from "@radix-ui/react-label";
+import { useTheme } from "next-themes";
 
 const Navbar = () => {
-  const onModeChange = () => {};
+  const { theme, setTheme } = useTheme();
+
   return (
     <nav className="flex justify-between mx-4 h-[60px] items-center">
       <div className="flex gap-6 font-semibold">
@@ -30,12 +32,15 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="flex gap-6 items-center">
-        <div className="flex items-center space-x-2">
-          <Switch id="airplane-mode" onCheckedChange={onModeChange} />
-          <Label htmlFor="airplane-mode">Mode</Label>
-        </div>
+        <Switch
+          // id="airplane-mode"
+          onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+        />
+        {/* <Label htmlFor="airplane-mode" className="cursor-pointer"> */}
+        {/*   Mode */}
+        {/* </Label> */}
 
-        <Button asChild>
+        <Button asChild variant="default">
           <Link href="/sign-in">Sign In</Link>
         </Button>
       </div>

@@ -17,8 +17,10 @@ export default HomeLayout;
 const Hero = () => {
   return (
     <section className="font-semibold mt-24 flex flex-col justify-center items-center">
-      <h1 className="sm:text-6xl text-4xl mb-8">Plan and Organize Events</h1>
-      <p className="text-center text-xl text-gray-900">
+      <h1 className="sm:text-6xl text-4xl text-transparent bg-clip-text bg-gradient-to-b dark:from-white dark:to-gray-300 from-black to-gray-700 py-2 mb-8">
+        Plan and Organize Events
+      </h1>
+      <p className="text-center text-xl text-gray-900 dark:text-gray-200">
         Turn ideas into action <br /> with Budget Man's AI-powered workspace.
       </p>
       <div className="flex gap-12 mt-8">
