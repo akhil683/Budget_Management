@@ -1,9 +1,16 @@
+// NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_aW50aW1hdGUtbW9ua2V5LTIwLmNsZXJrLmFjY291bnRzLmRldiQ
+// CLERK_SECRET_KEY=sk_test_nmSfUdFnqpe9cBqTHFOfq6NnwdDc0UKAOWmacpiwes
+//
+// MONGODB_URI= "mongodb+srv://akhil_palsra:akhil610376598440@budgetdb.ohjb9fa.mongodb.net/"
+// NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
+// NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
 "use client";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { sidebarLinks } from "@/constants/sidebar";
+import { sidebarLinks, sidebarBudget } from "@/constants/sidebar";
 import React from "react";
+import { Button } from "./ui/button";
 
 const Sidebar = () => {
   const pathname = usePathname();
@@ -26,14 +33,14 @@ const Sidebar = () => {
               {/*   width={24} */}
               {/*   height={24} */}
               {/* /> */}
-              <p className="font-semibold max-lg:hidden">{link.label}</p>
+              <p className="font-medium max-lg:hidden">{link.label}</p>
             </Link>
           );
         })}
       </div>
-      <div className="mt-8">
+      <div className="my-8">
         <p className=" text-sm font-semibold text-gray-600 mb-2">Budgets</p>
-        {sidebarLinks.map((link) => {
+        {sidebarBudget.map((link) => {
           const isActive =
             pathname === link.route || pathname.startsWith(`${link.route}/`);
           return (
@@ -48,11 +55,12 @@ const Sidebar = () => {
               {/*   width={24} */}
               {/*   height={24} */}
               {/* /> */}
-              <p className="font-semibold max-lg:text-sm">{link.label}</p>
+              <p className="font-medium max-lg:text-sm">{link.label}</p>
             </Link>
           );
         })}
       </div>
+      <Button variant="outline">Add Budget +</Button>
     </section>
   );
 };

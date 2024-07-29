@@ -1,12 +1,14 @@
 import Sidebar from "@/components/Sidebar";
-import React, { ReactNode } from "react";
+import React, { ReactNode, Suspense } from "react";
 
 const HomeLayout = ({ children }: { children: ReactNode }) => {
   return (
     <main className="flex">
       <Sidebar />
       <section>
-        <div>{children}</div>
+        <Suspense fallback={<h1 className="text-6xl">Loading...</h1>}>
+          <div>{children}</div>
+        </Suspense>
       </section>
     </main>
   );

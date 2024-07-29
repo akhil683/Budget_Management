@@ -17,3 +17,21 @@ export const sidebarLinks = [
     // imgUrl: "/icons/Video.svg",
   },
 ];
+export const sidebarBudget = [
+  {
+    label: "🚀 Team Hermetica",
+    route: "/",
+  },
+  {
+    label: "☕ Travelling",
+    route: "/travelling",
+  },
+  {
+    label: "📕 Resources",
+    route: "/previous",
+  },
+  {
+    label: "💵 Yearly Budget",
+    route: "budget",
+  },
+];

@@ -11,7 +11,7 @@ const Navbar = () => {
 
   return (
     <nav className="flex justify-between mx-4 h-[60px] items-center">
-      <div className="flex gap-6 font-semibold">
+      <div className="flex gap-6 font-medium">
         <Link href={"/"}>
           {/* <Image src={""} placeholder="Logo" /> */}
           <span>Budget Man</span>

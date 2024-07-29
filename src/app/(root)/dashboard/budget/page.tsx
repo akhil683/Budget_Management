@@ -24,16 +24,17 @@ const BudgetPage = () => {
     <section className="text-gray-900 w-full m-16">
       <div>
         <h1 className="font-semibold text-4xl flex items-center gap-6 group">
-          Neighbour Buget - 2024{" "}
+          My Yearly Buget - 2024{" "}
           <Dialog>
             <DialogTrigger>
-              <FaRegEdit className="text-2xl text-gray-400 group-hover:block cursor-pointer hidden" />
+              <FaRegEdit className="text-2xl text-gray-400 cursor-pointer" />
             </DialogTrigger>
             <DialogContentComp />
           </Dialog>
         </h1>
         <p className="text-sm text-gray-700 my-2">
-          Neighbour's budget for this year's birthday parties
+          My yearly budget for 2024 including travelling, subscription, semester
+          fee etc.
         </p>
       </div>
       <Sheet>
@@ -63,7 +64,7 @@ const DialogContentComp = () => {
       <div className="grid gap-4 py-4">
         <div className="grid grid-cols-4 items-center gap-4">
           <Label htmlFor="name" className="text-right">
-            Name
+            Name +
           </Label>
           <Input
             id="name"
