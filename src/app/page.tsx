@@ -1,19 +1,25 @@
-import Navbar from "@/components/Navbar";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import React from "react";
-
+import Meteors from "@/components/magicui/meteors";
 const HomeLayout = () => {
   return (
     <div>
-      <Navbar />
-      <Hero />
+      <Meteor />
     </div>
   );
 };
 
 export default HomeLayout;
 
+const Meteor = () => {
+  return (
+    <div className="relative flex h-[calc(100vh-70px)] w-full flex-col items-center justify-center overflow-hidden rounded-lg border bg-background md:shadow-xl">
+      <Meteors number={30} />
+      <Hero />
+    </div>
+  );
+};
 const Hero = () => {
   return (
     <section className="font-semibold mt-24 flex flex-col justify-center items-center">

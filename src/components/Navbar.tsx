@@ -3,8 +3,8 @@ import Link from "next/link";
 import React from "react";
 import { Button } from "./ui/button";
 import { Switch } from "./ui/switch";
-import { Label } from "@radix-ui/react-label";
 import { useTheme } from "next-themes";
+import { SignedIn, UserButton } from "@clerk/nextjs";
 
 const Navbar = () => {
   const { theme, setTheme } = useTheme();
@@ -21,7 +21,7 @@ const Navbar = () => {
             <Link href={"/dashboard"}>Dashboard</Link>
           </li>
           <li>
-            <Link href={""}>Solutions</Link>
+            <Link href={"/attendance"}>Attendance</Link>
           </li>
           <li>
             <Link href={""}>Resources</Link>
@@ -36,10 +36,10 @@ const Navbar = () => {
           // id="airplane-mode"
           onClick={() => setTheme(theme === "light" ? "dark" : "light")}
         />
-        {/* <Label htmlFor="airplane-mode" className="cursor-pointer"> */}
-        {/*   Mode */}
-        {/* </Label> */}
 
+        <SignedIn>
+          <UserButton />
+        </SignedIn>
         <Button asChild variant="default">
           <Link href="/sign-in">Sign In</Link>
         </Button>

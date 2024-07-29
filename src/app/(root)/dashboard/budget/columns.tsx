@@ -25,8 +25,12 @@ export const columns: ColumnDef<task>[] = [
     header: "Due",
   },
   {
-    accessorKey: "Type",
-    header: "type",
+    accessorKey: "type",
+    header: "Type",
+  },
+  {
+    accessorKey: "assign",
+    header: "Assign",
   },
   {
     accessorKey: "amount",
