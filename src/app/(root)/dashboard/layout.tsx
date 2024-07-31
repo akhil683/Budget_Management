@@ -7,7 +7,7 @@ const HomeLayout = ({ children }: { children: ReactNode }) => {
       <Sidebar />
       <section>
         <Suspense fallback={<h1 className="text-6xl">Loading...</h1>}>
-          <div>{children}</div>
+          {children}
         </Suspense>
       </section>
     </main>
