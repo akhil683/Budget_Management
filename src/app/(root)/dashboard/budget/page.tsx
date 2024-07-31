@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { columns } from "./columns";
 import { DataTable } from "./data-table";
 import Budgets from "@/constants/budgetData";
@@ -22,30 +22,32 @@ import {
 const BudgetPage = () => {
   return (
     <section className="text-gray-900 w-full m-16">
-      <div>
-        <h1 className="font-semibold text-4xl flex items-center gap-6 group">
-          My Yearly Buget - 2024{" "}
-          <Dialog>
-            <DialogTrigger>
-              <FaRegEdit className="text-2xl text-gray-400 cursor-pointer" />
-            </DialogTrigger>
-            <DialogContentComp />
-          </Dialog>
-        </h1>
-        <p className="text-sm text-gray-700 my-2">
-          My yearly budget for 2024 including travelling, subscription, semester
-          fee etc.
-        </p>
-      </div>
-      <Sheet>
-        <SheetTrigger asChild>
-          <Button>New</Button>
-        </SheetTrigger>
-        <BudgetSheet />
-      </Sheet>
-      <div className="my-8">
-        <DataTable columns={columns} data={Budgets} />
-      </div>
+      <Suspense fallback={<h1 className="text-6xl">Loading...</h1>}>
+        <div>
+          <h1 className="font-semibold text-4xl flex items-center gap-6 group">
+            My Yearly Buget - 2024{" "}
+            <Dialog>
+              <DialogTrigger>
+                <FaRegEdit className="text-2xl text-gray-400 cursor-pointer" />
+              </DialogTrigger>
+              <DialogContentComp />
+            </Dialog>
+          </h1>
+          <p className="text-sm text-gray-700 my-2">
+            My yearly budget for 2024 including travelling, subscription,
+            semester fee etc.
+          </p>
+        </div>
+        <Sheet>
+          <SheetTrigger asChild>
+            <Button>New</Button>
+          </SheetTrigger>
+          <BudgetSheet />
+        </Sheet>
+        <div className="my-8">
+          <DataTable columns={columns} data={Budgets} />
+        </div>
+      </Suspense>
     </section>
   );
 };
