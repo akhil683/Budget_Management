@@ -1,24 +1,21 @@
-"use client";
-import Link from "next/link";
 import React from "react";
 import { Button } from "./ui/button";
-import { Switch } from "./ui/switch";
-import { useTheme } from "next-themes";
+import { SheetHeader, SheetTitle, SheetContent } from "./ui/sheet";
 import { SignedIn, UserButton } from "@clerk/nextjs";
-import { Sheet, SheetTrigger } from "./ui/sheet";
-import MobileNav from "./MobileNav";
+import { Switch } from "./ui/switch";
+import Link from "next/link";
+import { useTheme } from "next-themes";
 
-const Navbar = () => {
+const MobileNav = () => {
   const { theme, setTheme } = useTheme();
-
   return (
-    <nav className="flex justify-between bg-green-400 mx-4 h-[60px] items-center">
-      <Link href={"/"}>
-        {/* <Image src={""} placeholder="Logo" /> */}
-        <span>Budget Man</span>
-      </Link>
-      <div className="flex gap-6 font-medium max-md:hidden">
-        <ul className="flex gap-6">
+    <SheetContent>
+      <SheetHeader>
+        <SheetTitle className="text-3xl">Budget-Man</SheetTitle>
+      </SheetHeader>
+      <hr className="my-4" />
+      <div className="flex gap-6 mt-8 font-medium">
+        <ul className="flex flex-col gap-4">
           <li>
             <Link href={"/dashboard"}>Dashboard</Link>
           </li>
@@ -33,12 +30,11 @@ const Navbar = () => {
           </li>
         </ul>
       </div>
-      <div className="flex gap-6 items-center max-md:hidden">
+      <hr className="my-4" />
+      <div className="flex flex-col gap-6 max-w-32">
         <Switch
-          // id="airplane-mode"
           onClick={() => setTheme(theme === "light" ? "dark" : "light")}
         />
-
         <SignedIn>
           <UserButton />
         </SignedIn>
@@ -46,12 +42,8 @@ const Navbar = () => {
           <Link href="/sign-in">Sign In</Link>
         </Button>
       </div>
-      <Sheet>
-        <SheetTrigger>Menu</SheetTrigger>
-        <MobileNav />
-      </Sheet>
-    </nav>
+    </SheetContent>
   );
 };
 
-export default Navbar;
+export default MobileNav;

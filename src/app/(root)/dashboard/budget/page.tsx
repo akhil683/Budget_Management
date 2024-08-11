@@ -1,4 +1,5 @@
-import React, { Suspense } from "react";
+"use client";
+import React, { Suspense, useState, useEffect } from "react";
 import { columns } from "./columns";
 import { DataTable } from "./data-table";
 import Budgets from "@/constants/budgetData";
@@ -8,7 +9,7 @@ import { BudgetSheet } from "@/components/BudgetSheet";
 import { FaRegEdit } from "react-icons/fa";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
-
+import axios from "axios";
 import {
   Dialog,
   DialogContent,
@@ -19,9 +20,34 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 
+interface budgetType {
+  email: string;
+  password: string;
+  username: string;
+}
 const BudgetPage = () => {
+  const [budget, setBudget] = useState<budgetType[]>([]);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    const response = await axios("/api/users");
+    setBudget(response.data);
+  };
   return (
     <section className="text-gray-900 w-full m-16">
+      <ul className="mb-4">
+        {budget?.map((budget: budgetType) => {
+          return (
+            <li>
+              email: {budget.email}, password: {budget.password}, username:{" "}
+              {budget.username}
+            </li>
+          );
+        })}
+      </ul>
       <Suspense fallback={<h1 className="text-6xl">Loading...</h1>}>
         <div>
           <h1 className="font-semibold text-4xl flex items-center gap-6 group">
@@ -44,7 +70,7 @@ const BudgetPage = () => {
           </SheetTrigger>
           <BudgetSheet />
         </Sheet>
-        <div className="my-8">
+        <div>
           <DataTable columns={columns} data={Budgets} />
         </div>
       </Suspense>
