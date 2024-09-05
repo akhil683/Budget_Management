@@ -1,21 +1,14 @@
 "use client";
 import Link from "next/link";
 import React from "react";
-import { Button } from "./ui/button";
-import { Switch } from "./ui/switch";
-import { useTheme } from "next-themes";
-import { SignedIn, UserButton } from "@clerk/nextjs";
-import { Sheet, SheetTrigger } from "./ui/sheet";
-import MobileNav from "./MobileNav";
 
 const Navbar = () => {
-  const { theme, setTheme } = useTheme();
 
   return (
-    <nav className="flex justify-between bg-green-400 mx-4 h-[60px] items-center">
+    <nav className="fixed bg-red-600 top-0 w-full bg-opacity-95 text-white z-20 flex justify-around h-[60px] items-center">
       <Link href={"/"}>
-        {/* <Image src={""} placeholder="Logo" /> */}
-        <span>Budget Man</span>
+        <span className="text-2xl font-semibold">Commodity Forecast
+        </span>
       </Link>
       <div className="flex gap-6 font-medium max-md:hidden">
         <ul className="flex gap-6">
@@ -23,33 +16,18 @@ const Navbar = () => {
             <Link href={"/dashboard"}>Dashboard</Link>
           </li>
           <li>
-            <Link href={"/attendance"}>Attendance</Link>
-          </li>
-          <li>
             <Link href={""}>Resources</Link>
           </li>
           <li>
             <Link href={"/pricing"}>Pricing</Link>
           </li>
+          <li>
+            <Link href={"/pricing"}>About Us</Link>
+          </li>
         </ul>
       </div>
-      <div className="flex gap-6 items-center max-md:hidden">
-        <Switch
-          // id="airplane-mode"
-          onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-        />
-
-        <SignedIn>
-          <UserButton />
-        </SignedIn>
-        <Button asChild variant="default">
-          <Link href="/sign-in">Sign In</Link>
-        </Button>
-      </div>
-      <Sheet>
-        <SheetTrigger>Menu</SheetTrigger>
-        <MobileNav />
-      </Sheet>
+      {/* <div className="flex gap-6 items-center max-md:hidden"> */}
+      {/* </div> */}
     </nav>
   );
 };
