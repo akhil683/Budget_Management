@@ -6,7 +6,7 @@ import { data } from '@/constants/chartData';
 
 const BudgetPage = ({ params }: { params: { CommodityId: string } }) => {
   return (
-    <div className="mx-12 flex flex-col justify-center h-[calc(100vh-60px)] w-full gap-8">
+    <div className="mx-12 flex flex-col justify-center h-[400px] w-full gap-8">
       <h2 className='text-2xl my-6 font-semibold'>Visualized Data for price history of {params.CommodityId} :</h2>
       <ResponsiveContainer width="100%" height="70%">
         <AreaChart
